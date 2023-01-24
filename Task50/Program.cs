@@ -41,39 +41,35 @@ void PrintMatrix(int[,] matrix)
     }
 }
 
+void PrintFoundElement(int[,] matrix, int numRow, int numColumn)
+{
+    if (numRow > matrix.GetLength(0) || numColumn > matrix.GetLength(1))
+    {
+        Console.WriteLine($"({numRow},{numColumn}) -> there is no such element in the matrix");
+    }
+    else Console.WriteLine($"Requested element  = {matrix[numRow, numColumn]}");
+}
 
 bool IsPositiveInputIndex(int indexRow, int indexColumn)
 {
     return indexRow > 0 && indexColumn > 0;
 }
 
-
-int PrintFoundElement(int[,] arr2D, int numRow, int numColumn)
-{
-    // for (int i = 0; i < arr2D.Length; i++)
-    if (numRow > arr2D.GetLength(0)) Console.WriteLine($"{numRow} input error: out of matrix range");
-    if (numColumn > arr2D.GetLength(1)) Console.WriteLine($"{numColumn} input error: out of matrix range");
-    else Console.WriteLine($"{arr2D[numRow, numColumn]}");
-}
-
-
-
 int[,] array2D = CreateMatrixRndInt(3, 4, -10, 10);
-// PrintMatrix(array2D);
+PrintMatrix(array2D);
 
-Console.WriteLine("Attantion:  index in the matrix starting since [0,0]");
-Console.WriteLine("Please input idexs to display the desired number in the Matrix:");
+Console.WriteLine("");
+Console.WriteLine("!!!Attantion: index in the matrix start with [0,0].");
+Console.WriteLine("Please input index to display the desired number in the Matrix:");
+Console.WriteLine("");
 
-Console.WriteLine("index1(row number):  ");
+Console.Write("index1(row number):  ");
 int index1 = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine("index2(column number):  ");
+Console.Write("index2(column number):  ");
 int index2 = Convert.ToInt32(Console.ReadLine());
-// IsPositiveInputIndex(index1, index2);
-//PrintFoundElement(array2D, index1, index2);
 
 if (IsPositiveInputIndex(index1, index2))
 {
-    bool result = PrintFoundedElement(array2D, index1, index2);
-    Console.WriteLine(result ? "Нет" : "Да");
+    PrintFoundElement(array2D, index1, index2);
 }
-else Console.WriteLine("Error of the index input");
+else Console.WriteLine("Negative index is error");
